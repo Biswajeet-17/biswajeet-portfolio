@@ -1,0 +1,109 @@
+@import "tailwindcss";
+@import "../styles/animations.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where(.light, .light *));
+
+:root {
+  --background: #020617;
+  --foreground: #f8fafc;
+  --muted: #94a3b8;
+  --card: rgba(255, 255, 255, 0.04);
+  --card-strong: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.09);
+  --accent: #8b5cf6;
+  --accent-2: #6366f1;
+  --glow: rgba(139, 92, 246, 0.22);
+}
+
+html.light {
+  --background: #f3f6fb;
+  --foreground: #0f172a;
+  --muted: #475569;
+  --card: rgba(15, 23, 42, 0.04);
+  --card-strong: rgba(15, 23, 42, 0.07);
+  --border: rgba(15, 23, 42, 0.12);
+  --glow: rgba(79, 70, 229, 0.12);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-card-strong: var(--card-strong);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent2: var(--accent-2);
+  --shadow-glow: 0 0 60px var(--glow);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  transition-property: background-color, color;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel {
+  background-color: color-mix(in oklab, var(--card) 85%, transparent);
+  border: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+html.light .glass-panel {
+  background-color: rgba(255, 255, 255, 0.78);
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+.text-gradient-accent {
+  background-image: linear-gradient(
+    90deg,
+    #a78bfa 0%,
+    #818cf8 45%,
+    #60a5fa 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.logo-chip {
+  background-image: linear-gradient(135deg, #8b5cf6 0%, #6366f1 52%, #3b82f6 110%);
+}
+
+html.light .text-gradient-accent {
+  background-image: linear-gradient(
+    90deg,
+    #5b21b6 0%,
+    #4338ca 45%,
+    #2563eb 100%
+  );
+}
+
+html.light .logo-chip {
+  background-image: linear-gradient(135deg, #6366f1 0%, #4f46e5 52%, #2563eb 110%);
+}
+
+.mesh-bg {
+  background-image:
+    radial-gradient(
+      600px circle at 12% -10%,
+      rgba(139, 92, 246, 0.09),
+      transparent 45%
+    ),
+    radial-gradient(
+      560px circle at 88% 8%,
+      rgba(239, 68, 68, 0.05),
+      transparent 45%
+    );
+}
